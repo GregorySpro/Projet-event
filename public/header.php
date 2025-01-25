@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil - Gestion d'Événements</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <header>
+<?php
+session_start();
+?>
+
+
+<header>
         <div class="container">
             <a href="index.html" id="logo-home">
                 <img src="images/logo.png" alt="Logo de la plateforme" />
@@ -15,20 +11,19 @@
             <div id="menu-toggle">☰</div> <!--Bouton hamburger pour téléphone-->
             <nav>
                 <ul>
-                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="index.php">Accueil</a></li>
                     <li><a href="events.html">Événements</a></li>
+                    
+                    <?php if (isset($_SESSION['user_id'])): ?>
                     <li><a href="create.html">Créer un Événement</a></li>
                     <li><a href="profile.html">Mon Profil</a></li>
+                    <li><a href="logout.php">Déconnexion</a></li>
+
+                    <?php else: ?>
                     <li><a href="login.html">Connexion</a></li>
+                    <?php endif; ?>
+
                 </ul>
             </nav>
         </div>
-    </header>
-    <main>
-        <p>Cette plateforme permet de découvrir et gérer des événements locaux.</p>
-    </main>
-    <footer>
-        <p id="footer-copyright">&copy; 2025 Gestion d'Événements</p>
-    </footer>
-</body>
-</html>
+</header>
